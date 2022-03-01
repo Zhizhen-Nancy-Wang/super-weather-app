@@ -258,12 +258,16 @@ function retrievePosition(position) {
                     )}°C</div>
                   </div>
                 </div>`;
+          highestC = `${Math.round(forecastDay.temp.max)}`;
+          console.log(highestC);
+          lowestC = `${Math.round(forecastDay.temp.min)}`;
+          console.log(lowestC);
           //F-button convert bottom part?????????????????????????/!!!!!!!!
           document
             .querySelector("#F-btn")
             .addEventListener("click", function () {
-              fConvert = (forecastDay.temp.max * 9) / 5 + 32;
-
+              fConvert = (highestC * 9) / 5 + 32;
+              console.log(fConvert);
               let fConvertRound = Math.round(fConvert);
               let highest = document.querySelector("#highest");
               highest.innerHTML = `${fConvertRound} °F`;
@@ -271,7 +275,7 @@ function retrievePosition(position) {
           document
             .querySelector("#F-btn")
             .addEventListener("click", function () {
-              fConvert = (forecastDay.temp.min * 9) / 5 + 32;
+              fConvert = (lowestC * 9) / 5 + 32;
 
               let fConvertRound = Math.round(fConvert);
               let lowest = document.querySelector("#lowest");
@@ -287,10 +291,10 @@ function retrievePosition(position) {
 
     let buttonCL = document.querySelector("#current-loc-btn");
     buttonCL.addEventListener("click", function () {
-      console.log(responseOneCall); //
+      console.log(responseOneCall);
 
       document.querySelector("#crt-weather-des").innerHTML =
-        responseOneCall.data.current.weather[0].description;
+        responseOneCall.data.current.weather[0].description; //current loc description
 
       document.querySelector("#num-feelslike").innerHTML = `${Math.round(
         responseOneCall.data.current.feels_like
@@ -316,7 +320,7 @@ function retrievePosition(position) {
         "#humidity"
       ).innerHTML = `${responseOneCall.data.current.humidity}%`; //current loc humidity
 
-      //Cbutton  current-location temp
+      //////////////////////////////////////////Cbutton  current-location temp
       let currentTemp = document.querySelector("#crt-cel");
 
       document.querySelector("#C-btn").addEventListener("click", function () {
@@ -325,7 +329,7 @@ function retrievePosition(position) {
         )} °C`;
       });
 
-      //Fbutton  current-location temp
+      ////////////////////////////////////////Fbutton  current-location temp
       document.querySelector("#F-btn").addEventListener("click", function () {
         fConvert = (responseOneCall.data.current.feels_like * 9) / 5 + 32;
 
@@ -333,7 +337,7 @@ function retrievePosition(position) {
         currentTemp.innerHTML = `${fConvertRound} °F`;
       });
 
-      //Cbutton current-location feels like convert
+      ///////////////////////////Cbutton current-location feels like convert
 
       document.querySelector("#C-btn").addEventListener("click", function () {
         document.querySelector("#num-feelslike").innerHTML = `${Math.round(
@@ -341,7 +345,7 @@ function retrievePosition(position) {
         )} °C`;
       });
 
-      //Fbutton current-location  feels like convert
+      ///////////////////////////Fbutton current-location feels like convert
       document.querySelector("#F-btn").addEventListener("click", function () {
         fConvert = (responseOneCall.data.current.feels_like * 9) / 5 + 32;
         let fConvertRound = Math.round(fConvert);
@@ -351,7 +355,7 @@ function retrievePosition(position) {
       });
     });
 
-    // change current temp icon
+    /////////////////////////////////////////// change current temp icon
     let crtImg = document.querySelector("#crt-img");
     let iconId = responseOneCall.data.current.weather[0].id;
     // console.log(iconId);
