@@ -1,6 +1,6 @@
 .main {
   text-align: center;
-  max-width: 500px;
+  max-width: 390px;
   font-family: "Baloo Paaji 2", sans-serif;
   margin: auto;
 }
@@ -32,23 +32,21 @@
 /** For tablet devices **/
 @media (min-width: 768px) and (max-width: 1023px) {
   .custom-shape-divider-bottom-1641903854 svg {
-    width: calc(100% + 1.3px);
-    height: 65px;
+    width: calc(166% + 1.3px);
+    height: 50px;
   }
 }
 
 /** For mobile devices **/
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .custom-shape-divider-bottom-1641903854 svg {
-    width: calc(146% + 1.3px);
-    height: 65px;
+    width: calc(166% + 1.3px);
+    height: 50px;
   }
 }
 
 /*-- Search Bar and Current Location--*/
-/* .top-row {
-  display: flex;
-} */
+
 .top-part {
   border-radius: 10px;
   background: #2087f9;
@@ -56,30 +54,21 @@
   padding-bottom: 9%;
   position: relative;
 }
-.top-three {
-  display: flex;
-}
-/* .current-loc-btn {
-  display: block;
-}
-.degree {
-  display: block;
-} */
 
 /* <!-- current-info -->*/
 .current-location {
   font-family: "Baloo Paaji 2", cursive;
   font-weight: 700;
-  font-size: 2.7rem;
+  font-size: 2.5rem;
   color: #fcfcfc;
   margin-top: 2%;
 }
 .current-date,
 .current-weather,
 .current-time {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: rgb(255, 255, 255);
-  font-weight: 600;
+  font-weight: 300;
 }
 .current-weather {
   text-transform: capitalize;
@@ -96,7 +85,6 @@
 }
 
 .feels {
-  margin-bottom: 10px;
   color: black;
 }
 /* <!-- weather-img -->*/
@@ -109,30 +97,26 @@
 /*  <!-- current-temperature -->*/
 .current-degree {
   font-weight: 600;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   color: #ffffff;
 }
 /* <!--------------------------------------------------------- Middle-part ------------------------------------------------------------> */
 
-.wrapper {
-  padding-right: 40px;
-}
 .middle-part {
   background-color: rgb(255, 255, 255);
 }
 .first-row,
 .second-row {
-  font-size: large;
-  font-weight: 600;
+  font-weight: 500;
   color: #039cee;
 }
 
 .detail-info {
-  text-align: end;
+  text-align: center;
 }
 
 .block {
-  padding: 1%;
+  padding: 3%;
   border-radius: 10px;
 }
 .block:hover {
@@ -159,17 +143,9 @@
   font-weight: 500;
 }
 .forecast-daily {
-  background: rgb(230, 23, 23);
+  background: rgb(254, 254, 254);
   border-radius: 10px;
   padding-top: 1%;
   padding-bottom: 1%;
   box-shadow: 2px 2px 4px rgb(199, 197, 197);
 }
-
-/* responsive */
-@media (max-width: 575px) {
-  .wrapper {
-    padding-right: 50px;
-    padding-left: 40px;
-  }
-} ;

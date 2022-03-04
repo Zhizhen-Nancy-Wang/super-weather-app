@@ -26,6 +26,7 @@ searchBar.addEventListener("submit", function (event) {
 
     axios.get(apiUrl).then(function (response) {
       console.log(response);
+
       let crtImg = document.querySelector("#crt-img");
       let iconId = response.data.weather[0].id;
       // console.log(iconId);
@@ -112,12 +113,11 @@ searchBar.addEventListener("submit", function (event) {
               forecastHTML =
                 forecastHTML +
                 `  <div class="col bottom-detail" >
-              <div class="forecast-daily mt-2">
-                <div class="btm-dates">${convertTime(forecastDay.dt)}</div>
-                <img src="${changeImg(
-                  forecastDay.weather[0].id
-                )}" class="mb-2" width="35px alt="
-                weather-img" />
+                   <div class="forecast-daily mt-2">
+                   <div class="btm-dates">${convertTime(forecastDay.dt)}</div>
+                   <img src="${changeImg(
+                     forecastDay.weather[0].id
+                   )}" class="mb-2" width="35px alt="weather-img" />
                 <div class="highest">${Math.round(forecastDay.temp.max)}°C</div>
                 <div class="lowest">${Math.round(forecastDay.temp.min)}°C</div>
               </div> 
