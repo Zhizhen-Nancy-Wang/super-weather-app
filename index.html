@@ -65,72 +65,80 @@
             </svg>
           </div>
           <!-- Search Bar and Current-Location Button-->
+
           <div class="container">
-            <form
-              action="javascript:void(0)"
-              onsubmit="handleOnSubmit(this)"
-              id="search-form"
-              class="row"
-            >
-              <div class="mt-1 col-10">
-                <input
-                  class="form-control me-2 search-bar"
-                  type="text"
-                  placeholder="Search for a city"
-                  aria-label="Search"
-                  id="city-input"
-                  name="cityInput"
-                />
-              </div>
+            <div class="container">
+              <form
+                action="javascript:void(0)"
+                onsubmit="handleOnSubmit(this)"
+                id="search-form"
+                class="row"
+              >
+                <div class="mt-1 col-10">
+                  <input
+                    class="form-control me-2 search-bar"
+                    type="text"
+                    placeholder="Search for a city"
+                    aria-label="Search"
+                    id="city-input"
+                    name="cityInput"
+                  />
+                </div>
 
-              <div class="mt-1 col-2">
-                <button class="btn btn-outline-light" type="submit">
-                  <img src="images/search.png" width="15px" alt="search" />
-                </button>
-              </div>
-            </form>
+                <div class="mt-1 col-2">
+                  <button class="btn btn-outline-light" type="submit">
+                    <img src="images/search.png" width="15px" alt="search" />
+                  </button>
+                </div>
+              </form>
+            </div>
 
-            <div class="row">
-              <div class="d-flex current-loc-btn col-6 mt-2">
-                <button
-                  type="button"
-                  class="btn btn-outline-light"
-                  id="current-loc-btn"
-                >
-                  current location
-                </button>
-              </div>
-
-              <div class="d-flex justify-content-end col-6 mt-2">
-                <div class="degree">
-                  <div
-                    class="btn-group"
-                    role="group"
-                    aria-label="Basic outlined example"
+            <div class="container">
+              <div class="row">
+                <div class="d-flex current-loc-btn col-6 mt-2">
+                  <button
+                    type="button"
+                    class="btn btn-outline-light"
+                    id="current-loc-btn"
                   >
-                    <button
-                      type="button"
-                      id="C-btn"
-                      class="btn btn-outline-light"
-                    >
-                      <img
-                        src="images/celsius.png"
-                        width="20px"
-                        alt="celsius"
-                      />
-                    </button>
+                    current location
+                  </button>
+                </div>
 
-                    <button
-                      type="button"
-                      id="F-btn"
-                      class="btn btn-outline-light"
+                <div
+                  class="d-flex justify-content-end col-6 mt-2"
+                  style="padding-right: 8px"
+                >
+                  <div class="degree">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic outlined example"
                     >
-                      <img
-                        src="images/farenheit.png"
-                        width="20px"
-                        alt="fahrenheit"
-                      />
-                    </button>
+                      <button
+                        type="button"
+                        id="C-btn"
+                        class="btn btn-outline-light"
+                      >
+                        <img
+                          src="images/celsius.png"
+                          width="20px"
+                          alt="celsius"
+                        />
+                      </button>
+
+                      <button
+                        type="button"
+                        id="F-btn"
+                        class="btn btn-outline-light"
+                      >
+                        <img
+                          src="images/farenheit.png"
+                          width="20px"
+                          alt="fahrenheit"
+                        />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -143,8 +151,8 @@
               <div class="current-location text-capitalize" id="input-location">
                 Sydney
               </div>
-              <span class="current-date" id="crt-day">Mon </span>
-              <span class="current-time" id="crt-time"> 10:00</span>
+              <span class="current-date" id="crt-day"> Mon </span>
+              <span class="current-time" id="crt-time"> </span>
               <div class="current-weather fs-5" id="crt-weather-des">
                 Cloudy
               </div>
@@ -156,7 +164,7 @@
             <div class="row">
               <div class="col-4"></div>
 
-              <div class="col-4">
+              <div class="col-4" id="current-img">
                 <img
                   src="images/cloud.png"
                   class="img-fluid crt-img"
@@ -168,7 +176,7 @@
               <div class="col-4 float-feelslike">
                 <div class="container feels">
                   <div class="feelslike-info">FEELS LIKE</div>
-                  <div class="num-feelslike fs-4" id="num-feelslike">25 °</div>
+                  <div class="num-feelslike fs-5" id="num-feelslike">25 °</div>
                 </div>
               </div>
             </div>
@@ -281,35 +289,35 @@
                 </div>
               </div>
 
-              <!-- <div class="col bottom-detail">
-              <div class="forecast-daily mt-2">
-                <div class="btm-dates">Wed</div>
-                <img src="images/sun.png" class="mb-2" width="35px
-                alt="weather-img" />
-                <div class="highest">24°C</div>
-                <div class="lowest">20°C</div>
+              <div class="col bottom-detail">
+                <div class="forecast-daily mt-2">
+                  <div class="btm-dates">Wed</div>
+                  <img src="images/sun.png" class="mb-2" width="35px
+                  alt="weather-img" />
+                  <div class="highest">24°C</div>
+                  <div class="lowest">20°C</div>
+                </div>
               </div>
-            </div> -->
+
+              <div class="col bottom-detail">
+                <div class="forecast-daily mt-2">
+                  <div class="btm-dates">Thur</div>
+                  <img src="images/winter.png" class="mb-2" width="35px
+                  alt="weather-img" />
+                  <div class="highest">24°C</div>
+                  <div class="lowest">20°C</div>
+                </div>
+              </div>
 
               <!-- <div class="col bottom-detail">
-              <div class="forecast-daily mt-2">
-                <div class="btm-dates">Thur</div>
-                <img src="images/winter.png" class="mb-2" width="35px
-                alt="weather-img" />
-                <div class="highest">24°C</div>
-                <div class="lowest">20°C</div>
-              </div>
-            </div> -->
-              <!-- 
-            <div class="col bottom-detail">
-              <div class="forecast-daily mt-2">
-                <div class="btm-dates">Fri</div>
-                <img src="images/thunder.png" class="mb-2"width="35px
-                alt="weather-img" />
-                <div class="highest">24°C</div>
-                <div class="lowest">20°C</div>
-              </div>
-            </div> -->
+                <div class="forecast-daily mt-2">
+                  <div class="btm-dates">Fri</div>
+                  <img src="images/thunder.png" class="mb-2"width="35px
+                  alt="weather-img" />
+                  <div class="highest">24°C</div>
+                  <div class="lowest">20°C</div>
+                </div>
+              </div> -->
             </div>
           </div>
         </div>

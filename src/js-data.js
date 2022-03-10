@@ -109,7 +109,7 @@ searchBar.addEventListener("submit", function (event) {
           //display forcasted four-day weather at the bottom
           forecast.forEach(function (forecastDay, index) {
             if (index < 5 && index != 0) {
-              console.log(forecastDay.weather[0].id);
+              //console.log(forecastDay.weather[0].id);
               forecastHTML =
                 forecastHTML +
                 `  <div class="col bottom-detail" >
@@ -230,7 +230,7 @@ function retrievePosition(position) {
     function displayForecast() {
       let forecastElement = document.querySelector("#forecast");
 
-      let forecastHTML = `<div class="row">`;
+      let forecastHTML = `<div class="row b-row">`;
       //convert time from dt to human time
       function convertTime(timestamp) {
         let date = new Date(timestamp * 1000);

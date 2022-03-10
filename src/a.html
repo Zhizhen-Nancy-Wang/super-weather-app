@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script
+      src="https://kit.fontawesome.com/778a1fe930.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <form id="search-form">
+            <input type="text" placeholder="search" id="searched-city" />
+            <button type="submit" id="search-button">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+            <button type="button" class="btn btn-outline-warning" id="here-now">
+              current location
+            </button>
+          </form>
+        </div>
+        <div class="col-12 actual-city" id="here"></div>
+        <div class="actual-date"></div>
+      </div>
+
+      <div class="actual-icon">
+        <img
+          src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+          alt=""
+          class="img-icon"
+        />
+      </div>
+      <div class="weather-description">Clear</div>
+      <div class="row today">
+        <div class="col-6 actual-temperature">
+          <div class="row degree">
+            <div class="col-2"></div>
+            <div class="col-6 t">
+            <span id="temp"></span>
+            </div>
+              <div class="col-4 c">
+                  <a href="#" id="celsius">|  <strong>°C </strong></a>
+                  <br> <a href="#" id="fahrenheit"> °F </a></span>
+               </div>
+          </div>
+        </div>
+        <div class="col-6 other-infos">
+          <ul>
+            <li>
+              Humidity
+              <div><span class="humidity"></span>%</div>
+            </li>
+            <li>
+              Wind
+              <div><span class="wind"></span><span class="wind-unit"> m/s
+              </span></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row forecast">
+        </div>
+    </div>
+     <footer>
+      <a
+        href="https://github.com/amirabenz/vanilla-weather-app"
+        id="source-code"
+        target="_blank"
+        >Open Source Code</a
+      >
+      by Amira Benzid
+    </footer>
+    <script src="src/app.js"></script>
+  </body>
+</html>
