@@ -216,20 +216,22 @@ const changeImg = (iconId) => {
 
 let crtLocationBtn = document.querySelector("#current-loc-btn");
 
-crtLocationBtn.addEventListener(
-  "click",
-  navigator.geolocation.getCurrentPosition((position) => {
-    // console.log(position);
+const getCurrWeather = (position) => {
+  let apiUrlOneCall = `https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=${units}&exclude=minutely&appid=${apiKey} `;
+  let apiUrlCurrentWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}`;
 
-    let apiUrlOneCall = `https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=${units}&exclude=minutely&appid=${apiKey} `;
-    let apiUrlCurrentWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}`;
+  axios.get(apiUrlOneCall).then(getPopUv);
+  axios.get(apiUrlOneCall).then(displayCLInfo);
+  axios.get(apiUrlCurrentWeather).then(displayCLName);
+  axios.get(apiUrlOneCall).then(displayForecast);
+};
 
-    axios.get(apiUrlOneCall).then(getPopUv);
-    axios.get(apiUrlOneCall).then(displayCLInfo);
-    axios.get(apiUrlCurrentWeather).then(displayCLName);
-    axios.get(apiUrlOneCall).then(displayForecast);
-  })
-);
+const getPosition = (event) => {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(getCurrWeather);
+};
+
+crtLocationBtn.addEventListener("click", getPosition);
 
 const displayCLInfo = (responseOneCall) => {
   document.querySelector("#crt-weather-des").innerHTML =
