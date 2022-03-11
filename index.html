@@ -36,95 +36,237 @@
   </head>
 
   <body>
-    <div class="main">
-      <!-- Top-part -->
-      <div class="top-part">
-        <!-- Top-curve -->
-        <div class="custom-shape-divider-bottom-1641903854">
-          <svg
-            data-name="Layer 1"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-              opacity=".25"
-              class="shape-fill"
-            ></path>
-            <path
-              d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
-              opacity=".5"
-              class="shape-fill"
-            ></path>
-            <path
-              d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
-              class="shape-fill"
-            ></path>
-          </svg>
-        </div>
-        <!-- Search Bar and Current Location-->
-        <div class="container top-three">
-          <div class="top-row">
-            <div class="row">
-              <div class="col-12 col-xs-6 col-sm-5 mt-2">
-                <form class="d-flex" id="search-form">
+    <div class="wrapper">
+      <div class="main">
+        <!-- Top-part -->
+        <div class="top-part">
+          <!-- Top-curve -->
+          <div class="custom-shape-divider-bottom-1641903854">
+            <svg
+              data-name="Layer 1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1200 120"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+                opacity=".25"
+                class="shape-fill"
+              ></path>
+              <path
+                d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+                opacity=".5"
+                class="shape-fill"
+              ></path>
+              <path
+                d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+                class="shape-fill"
+              ></path>
+            </svg>
+          </div>
+          <!-- Search Bar and Current-Location Button-->
+
+          <div class="container">
+            <div class="container">
+              <form
+                action="javascript:void(0)"
+                onsubmit="handleOnSubmit(this)"
+                id="search-form"
+                class="row"
+              >
+                <div class="mt-1 col-10">
                   <input
                     class="form-control me-2 search-bar"
-                    type="search"
+                    type="text"
                     placeholder="Search for a city"
                     aria-label="Search"
                     id="city-input"
+                    name="cityInput"
                   />
+                </div>
 
+                <div class="mt-1 col-2">
                   <button class="btn btn-outline-light" type="submit">
                     <img src="images/search.png" width="15px" alt="search" />
                   </button>
-                </form>
-              </div>
+                </div>
+              </form>
+            </div>
 
-              <div class="d-flex col-6 col-xs-4 col-sm-4 current-loc-btn mt-2">
-                <button
-                  type="button"
-                  class="btn btn-outline-light"
-                  id="current-loc-btn"
-                >
-                  current location
-                </button>
-              </div>
-
-              <div
-                class="d-flex justify-content-end col-6 col-xs-2 col-sm-2 mt-2"
-              >
-                <div class="degree">
-                  <div
-                    class="btn-group"
-                    role="group"
-                    aria-label="Basic outlined example"
+            <div class="container">
+              <div class="row">
+                <div class="d-flex current-loc-btn col-6 mt-2">
+                  <button
+                    type="button"
+                    class="btn btn-outline-light"
+                    id="current-loc-btn"
                   >
-                    <button
-                      type="button"
-                      id="C-btn"
-                      class="btn btn-outline-light"
-                    >
-                      <img
-                        src="images/celsius.png"
-                        width="20px"
-                        alt="celsius"
-                      />
-                    </button>
+                    current location
+                  </button>
+                </div>
 
-                    <button
-                      type="button"
-                      id="F-btn"
-                      class="btn btn-outline-light"
+                <div
+                  class="d-flex justify-content-end col-6 mt-2"
+                  style="padding-right: 8px"
+                >
+                  <div class="degree">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic outlined example"
                     >
-                      <img
-                        src="images/farenheit.png"
-                        width="20px"
-                        alt="fahrenheit"
-                      />
-                    </button>
+                      <button
+                        type="button"
+                        id="C-btn"
+                        class="btn btn-outline-light"
+                      >
+                        <img
+                          src="images/celsius.png"
+                          width="20px"
+                          alt="celsius"
+                        />
+                      </button>
+
+                      <button
+                        type="button"
+                        id="F-btn"
+                        class="btn btn-outline-light"
+                      >
+                        <img
+                          src="images/farenheit.png"
+                          width="20px"
+                          alt="fahrenheit"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- current-info  -->
+          <div class="current-info">
+            <span>
+              <div class="current-location text-capitalize" id="input-location">
+                Sydney
+              </div>
+              <span class="current-date" id="crt-day"> Mon </span>
+              <span class="current-time" id="crt-time"> </span>
+              <div class="current-weather fs-5" id="crt-weather-des">
+                Cloudy
+              </div>
+            </span>
+          </div>
+
+          <!-- weather-img -->
+          <div class="container">
+            <div class="row">
+              <div class="col-4"></div>
+
+              <div class="col-4" id="current-img">
+                <img
+                  src="images/cloud.png"
+                  class="img-fluid crt-img"
+                  alt="weather-img"
+                  id="crt-img"
+                />
+              </div>
+
+              <div class="col-4 float-feelslike">
+                <div class="container feels">
+                  <div class="feelslike-info">FEELS LIKE</div>
+                  <div class="num-feelslike fs-5" id="num-feelslike">25 °</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- current-temperature -->
+
+          <div class="current-degree">
+            <span class="current-celsius" id="crt-cel" style="display: inline"
+              >25 °C</span
+            >
+          </div>
+        </div>
+
+        <!-- Middle-part -->
+        <div class="wrapper">
+          <div class="container middle-part">
+            <div class="container">
+              <div class="container">
+                <div class="row first-row">
+                  <div class="col-6 block">
+                    <div class="row">
+                      <div class="col-4 mt-2">
+                        <img
+                          src="images/umbrella.png"
+                          class="detail-img"
+                          width="35px"
+                          alt="rainfall"
+                        />
+                      </div>
+                      <div class="col-8 detail-info">
+                        <div class="rainfall-info fs-5" id="rainfall-info">
+                          75%
+                        </div>
+                        <div class="rainfall fs-6" id="rainfall">RAINFALL</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-6 block">
+                    <div class="row">
+                      <div class="col-4 mt-2">
+                        <img
+                          src="images/wind.png"
+                          class="detail-img"
+                          width="35px"
+                          alt="wind"
+                        />
+                      </div>
+                      <div class="col-8 detail-info">
+                        <div class="wind-info fs-5" id="wind-info">16km/h</div>
+                        <div class="wind fs-6">WIND</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row second-row">
+                  <div class="col-6 block">
+                    <div class="row">
+                      <div class="col-4 mt-2">
+                        <img
+                          src="images/uv-protection.png"
+                          class="detail-img"
+                          width="35px"
+                          alt="uv"
+                        />
+                      </div>
+                      <div class="col-8 detail-info">
+                        <div class="uv-info fs-5" id="uv-info">10/ 11</div>
+                        <div class="uv fs-6">UV INDEX</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-6 block">
+                    <div class="row">
+                      <div class="col-4 mt-2">
+                        <img
+                          src="images/water.png"
+                          class="detail-img"
+                          width="35px"
+                          alt="sprout"
+                        />
+                      </div>
+                      <div class="col-8 detail-info">
+                        <div class="humidity-info fs-5" id="humidity">0</div>
+                        <div class="humidity fs-6">HUMIDITY</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -132,193 +274,63 @@
           </div>
         </div>
 
-        <!-- current-info  -->
-        <div class="current-info">
-          <span>
-            <div
-              class="current-location text-capitalize"
-              id="input-location"
-            ></div>
-            <span class="current-date" id="crt-day">Mon </span>
-            <span class="current-time" id="crt-time">10:00</span>
-            <div class="current-weather fs-5" id="crt-weather-des">Cloudy</div>
-          </span>
-        </div>
+        <!-- Bottom-part  -->
 
-        <!-- weather-img -->
-        <div class="container">
-          <div class="row">
-            <div class="col-4"></div>
-
-            <div class="col-4">
-              <img
-                src="images/cloud.png"
-                class="img-fluid crt-img"
-                alt="weather-img"
-                id="crt-img"
-              />
-            </div>
-
-            <div class="col-4 float-feelslike">
-              <div class="container feels">
-                <div class="feelslike-info">FEELS LIKE</div>
-                <div class="num-feelslike fs-4" id="num-feelslike">25 °</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- current-temperature -->
-
-        <div class="current-degree">
-          <span
-            class="current-celsius"
-            id="crt-cel"
-            style="display: inline"
-          ></span>
-        </div>
-      </div>
-
-      <!-- Middle-part -->
-      <div class="wrapper">
-        <div class="container-fluid middle-part">
-          <div class="row first-row">
-            <div class="col-sm-1"></div>
-
-            <div class="col-sm-5 block">
-              <div class="row">
-                <div class="col-4 col-sm-4 mt-2">
-                  <img
-                    src="images/umbrella.png"
-                    class="detail-img"
-                    width="35px"
-                    alt="rainfall"
-                  />
-                </div>
-                <div class="col-8 col-sm-8 detail-info">
-                  <div class="rainfall-info fs-5" id="rainfall-info">75%</div>
-                  <div class="rainfall fs-6" id="rainfall">RAINFALL</div>
+        <div class="bottom-part">
+          <div class="container" id="forecast">
+            <div class="row bottom-row">
+              <div class="col bottom-detail">
+                <div class="forecast-daily mt-2">
+                  <div class="btm-dates">Tue</div>
+                  <img src="images/rain.png" class="mb-2" width="35px alt="
+                  weather-img" />
+                  <div class="highest">24°C</div>
+                  <div class="lowest" id="lowest">20°C</div>
                 </div>
               </div>
-            </div>
 
-            <div class="col-sm-1"></div>
-
-            <div class="col-sm-5 block">
-              <div class="row">
-                <div class="col-4 col-sm-4 mt-2">
-                  <img
-                    src="images/wind.png"
-                    class="detail-img"
-                    width="35px"
-                    alt="wind"
-                  />
-                </div>
-                <div class="col-8 col-sm-8 detail-info">
-                  <div class="wind-info fs-5" id="wind-info">16km/h</div>
-                  <div class="wind fs-6">WIND</div>
+              <div class="col bottom-detail">
+                <div class="forecast-daily mt-2">
+                  <div class="btm-dates">Wed</div>
+                  <img src="images/sun.png" class="mb-2" width="35px
+                  alt="weather-img" />
+                  <div class="highest">24°C</div>
+                  <div class="lowest">20°C</div>
                 </div>
               </div>
-            </div>
-          </div>
 
-          <div class="row second-row">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-5 block">
-              <div class="row">
-                <div class="col-4 col-sm-4 mt-2">
-                  <img
-                    src="images/uv-protection.png"
-                    class="detail-img"
-                    width="35px"
-                    alt="uv"
-                  />
-                </div>
-                <div class="col-8 col-sm-8 detail-info">
-                  <div class="uv-info fs-5" id="uv-info">10/ 11</div>
-                  <div class="uv fs-6">UV INDEX</div>
+              <div class="col bottom-detail">
+                <div class="forecast-daily mt-2">
+                  <div class="btm-dates">Thur</div>
+                  <img src="images/winter.png" class="mb-2" width="35px
+                  alt="weather-img" />
+                  <div class="highest">24°C</div>
+                  <div class="lowest">20°C</div>
                 </div>
               </div>
-            </div>
 
-            <div class="col-sm-1"></div>
-
-            <div class="col-sm-5 block">
-              <div class="row">
-                <div class="col-4 col-sm-4 mt-2">
-                  <img
-                    src="images/water.png"
-                    class="detail-img"
-                    width="35px"
-                    alt="sprout"
-                  />
+              <!-- <div class="col bottom-detail">
+                <div class="forecast-daily mt-2">
+                  <div class="btm-dates">Fri</div>
+                  <img src="images/thunder.png" class="mb-2"width="35px
+                  alt="weather-img" />
+                  <div class="highest">24°C</div>
+                  <div class="lowest">20°C</div>
                 </div>
-                <div class="col-8 col-sm-8 detail-info">
-                  <div class="humidity-info fs-5" id="humidity">0</div>
-                  <div class="humidity fs-6">HUMIDITY</div>
-                </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Bottom-part  -->
-
-      <div class="bottom-part">
-        <div class="container" id="forecast">
-          <div class="row bottom-row">
-            <div class="col bottom-detail">
-              <div class="forecast-daily mt-2">
-                <div class="btm-dates">Tue</div>
-                <img src="images/rain.png" class="mb-2" width="35px alt="
-                weather-img" />
-                <div class="highest">24°C</div>
-                <div class="lowest" id="lowest">20°C</div>
-              </div>
-            </div>
-
-            <!-- <div class="col bottom-detail">
-              <div class="forecast-daily mt-2">
-                <div class="btm-dates">Wed</div>
-                <img src="images/sun.png" class="mb-2" width="35px
-                alt="weather-img" />
-                <div class="highest">24°C</div>
-                <div class="lowest">20°C</div>
-              </div>
-            </div> -->
-
-            <!-- <div class="col bottom-detail">
-              <div class="forecast-daily mt-2">
-                <div class="btm-dates">Thur</div>
-                <img src="images/winter.png" class="mb-2" width="35px
-                alt="weather-img" />
-                <div class="highest">24°C</div>
-                <div class="lowest">20°C</div>
-              </div>
-            </div> -->
-            <!-- 
-            <div class="col bottom-detail">
-              <div class="forecast-daily mt-2">
-                <div class="btm-dates">Fri</div>
-                <img src="images/thunder.png" class="mb-2"width="35px
-                alt="weather-img" />
-                <div class="highest">24°C</div>
-                <div class="lowest">20°C</div>
-              </div>
-            </div> -->
-          </div>
+        <div>
+          <a href="https://github.com/MengZhiAnHunQu/super-weather-app"
+            >open-source code</a
+          >
+          by Nancy Wang 15.02.2022
         </div>
-      </div>
-
-      <div>
-        <a href="https://github.com/MengZhiAnHunQu/super-weather-app"
-          >open-source code</a
-        >
-        by Nancy Wang 15.02.2022
       </div>
     </div>
 
-    <script src="src/js-data.js"></script>
+    <script src="src/script.js"></script>
   </body>
 </html>
