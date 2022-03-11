@@ -73,7 +73,15 @@ const handleOnSubmit = (e) => {
 const getWeatherInfo = (cityInput) => {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${apiKey}&&units=${units}`;
   console.log(cityInput);
-  axios.get(apiUrl).then(getLatLon);
+  axios
+    .get(apiUrl)
+    .then(getLatLon)
+    .catch((err) => {
+      alert("sorry, I can't find this city😅");
+    });
+  // if (err instanceof Err) {
+  //   alert("sorry, I can't find this city");
+  // }
   axios.get(apiUrl).then(displayCityInput);
 };
 
@@ -154,7 +162,7 @@ const displayForecast = (responseOneCall) => {
     if (index < 5 && index != 0) {
       forecastHTML += `
              <div class="col bottom-detail">
-                <div class="forecast-daily mt-2">
+                <div class="forecast-daily mt-1">
                   <div class="btm-dates">${convertTime(forecastDay.dt)}</div>
                 <img src="${changeImg(
                   forecastDay.weather[0].id
