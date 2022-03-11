@@ -3,10 +3,7 @@
 let nowTime = new Date();
 
 let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-document.querySelector("#crt-day").innerHTML = `${days[nowTime.getDay()]}`;
-document.querySelector(
-  "#crt-time"
-).innerHTML = `${nowTime.getHours()}:${nowTime.getMinutes()}`;
+
 let minutes = new Date().getMinutes();
 let hours = new Date().getHours();
 if (hours < 10) {
@@ -15,6 +12,8 @@ if (hours < 10) {
 if (minutes < 10) {
   minutes = `0${minutes}`;
 }
+document.querySelector("#crt-day").innerHTML = `${days[nowTime.getDay()]}`;
+document.querySelector("#crt-time").innerHTML = `${hours}:${minutes}`;
 
 /*APIkey*/
 let apiKey = "88bd6dd00f81a7aa3e1bf9be1b5a37c7";
@@ -22,17 +21,14 @@ let units = "metric";
 
 ///////////////////////////////C&F Button/////////////////////////////
 
-const toFahrenheit = (response) => {
+const toFahrenheit = () => {
   let cityInput = document.querySelector("#input-location").innerHTML;
-  console.log(response);
+
   let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${apiKey}&&units=${units}`;
-  let latInput = response.data.coord.lat;
-  let lonInput = response.data.coord.lon;
-  let apiUrlOneCall = `https://api.openweathermap.org/data/2.5/onecall?lat=${latInput}&lon=${lonInput}&units=${units}&exclude=minutely&appid=${apiKey} `;
   axios.get(apiUrl).then(changeF);
-  axios.get(apiUrlOneCall).then(displayForecast);
 };
+
 const changeF = (response) => {
   document.querySelector("#crt-cel").innerHTML = `${Math.round(
     response.data.main.temp
@@ -41,14 +37,19 @@ const changeF = (response) => {
   document.querySelector("#num-feelslike").innerHTML = `${Math.round(
     response.data.main.feels_like
   )} °F`; //search city feels-like
+  let latInput = response.data.coord.lat;
+  let lonInput = response.data.coord.lon;
+  let units = "imperial";
+  let apiUrlOneCall = `https://api.openweathermap.org/data/2.5/onecall?lat=${latInput}&lon=${lonInput}&units=${units}&exclude=minutely&appid=${apiKey} `;
+  axios.get(apiUrlOneCall).then(displayForecast);
 };
 
 const toCelsius = () => {
   let cityInput = document.querySelector("#input-location").innerHTML;
   console.log(cityInput);
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${apiKey}&&units=${units}`;
-
   axios.get(apiUrl).then(displayCityInput);
+  axios.get(apiUrl).then(getLatLon);
 };
 
 let Fbtn = document.querySelector("#F-btn");
@@ -56,6 +57,7 @@ Fbtn.addEventListener("click", toFahrenheit);
 
 let Cbtn = document.querySelector("#C-btn");
 Cbtn.addEventListener("click", toCelsius);
+
 /////////////////////////////////////////////////CITY INPUT//////////////////////////////////////
 //capture city input
 const handleOnSubmit = (e) => {
@@ -64,16 +66,15 @@ const handleOnSubmit = (e) => {
   const cityInput = frmDt.get("cityInput");
   //console.log(cityInput);
   document.querySelector("#input-location").innerHTML = cityInput;
+  //console.log(cityInput);
+  getWeatherInfo(cityInput);
+};
+
+const getWeatherInfo = (cityInput) => {
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${apiKey}&&units=${units}`;
   console.log(cityInput);
-
-  //get apiUrl
-  const getWeatherInfo = () => {
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${apiKey}&&units=${units}`;
-
-    axios.get(apiUrl).then(getLatLon);
-    axios.get(apiUrl).then(displayCityInput);
-  };
-  getWeatherInfo();
+  axios.get(apiUrl).then(getLatLon);
+  axios.get(apiUrl).then(displayCityInput);
 };
 
 //apiUrlOneCall get cityInput lon and lat
@@ -142,7 +143,7 @@ const convertTime = (timestamp) => {
 const displayForecast = (responseOneCall) => {
   let forecast = responseOneCall.data.daily;
   let forecastHTML = `<div class="row">`;
-  console.log(forecast);
+  //console.log(forecast);
 
   let forecastElement = document.querySelector("#forecast");
 
@@ -160,10 +161,10 @@ const displayForecast = (responseOneCall) => {
                 )}" class="mb-2" width="35px alt="weather-img" />
                   <div class="highest">${Math.round(
                     forecastDay.temp.max
-                  )}°C</div>
+                  )}°</div>
                   <div class="lowest" id="lowest">${Math.round(
                     forecastDay.temp.min
-                  )}°C</div>
+                  )}°</div>
                 </div>
               </div>   
   `;
@@ -205,20 +206,22 @@ const changeImg = (iconId) => {
 
 ////////////////////////////CURRENT LOCATION///////////////////////
 
-const getCrtLocation = navigator.geolocation.getCurrentPosition((position) => {
-  // console.log(position);
-
-  let apiUrlOneCall = `https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=${units}&exclude=minutely&appid=${apiKey} `;
-  let apiUrlCurrentWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}`;
-
-  axios.get(apiUrlOneCall).then(getPopUv);
-  axios.get(apiUrlOneCall).then(displayCLInfo);
-  axios.get(apiUrlCurrentWeather).then(displayCLName);
-  axios.get(apiUrlOneCall).then(displayForecast);
-});
-
 let crtLocationBtn = document.querySelector("#current-loc-btn");
-crtLocationBtn.addEventListener("click", getCrtLocation);
+
+crtLocationBtn.addEventListener(
+  "click",
+  navigator.geolocation.getCurrentPosition((position) => {
+    // console.log(position);
+
+    let apiUrlOneCall = `https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=${units}&exclude=minutely&appid=${apiKey} `;
+    let apiUrlCurrentWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}`;
+
+    axios.get(apiUrlOneCall).then(getPopUv);
+    axios.get(apiUrlOneCall).then(displayCLInfo);
+    axios.get(apiUrlCurrentWeather).then(displayCLName);
+    axios.get(apiUrlOneCall).then(displayForecast);
+  })
+);
 
 const displayCLInfo = (responseOneCall) => {
   document.querySelector("#crt-weather-des").innerHTML =
@@ -239,11 +242,11 @@ const displayCLInfo = (responseOneCall) => {
   document.querySelector(
     "#humidity"
   ).innerHTML = `${responseOneCall.data.current.humidity}%`; //humidity
-  console.log(responseOneCall);
+  //console.log(responseOneCall);
 };
 
 const displayCLName = (responseCurrentWeather) => {
-  console.log(responseCurrentWeather);
+  //console.log(responseCurrentWeather);
   document.querySelector("#input-location").innerHTML =
     responseCurrentWeather.data.name;
 };
