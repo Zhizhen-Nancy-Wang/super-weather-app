@@ -151,7 +151,7 @@ const displayForecast = (responseOneCall) => {
 
   //display city input forecast
   forecast.forEach((forecastDay, index) => {
-    if (index < 4 && index != 0) {
+    if (index < 5 && index != 0) {
       forecastHTML += `
              <div class="col bottom-detail">
                 <div class="forecast-daily mt-2">

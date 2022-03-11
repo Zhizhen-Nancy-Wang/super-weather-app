@@ -1,6 +1,6 @@
 .main {
   text-align: center;
-  max-width: 390px;
+  max-width: 450px;
   font-family: "Baloo Paaji 2", sans-serif;
   margin: auto;
 }
@@ -30,18 +30,18 @@
 }
 
 /** For tablet devices **/
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 391px) and (max-width: 600px) {
   .custom-shape-divider-bottom-1641903854 svg {
-    width: calc(166% + 1.3px);
-    height: 50px;
+    width: calc(166% + 2.3px);
+    height: 80px;
   }
 }
 
 /** For mobile devices **/
-@media (max-width: 768px) {
+@media (max-width: 390px) {
   .custom-shape-divider-bottom-1641903854 svg {
-    width: calc(166% + 1.3px);
-    height: 50px;
+    width: calc(166% + 2.3px);
+    height: 60px;
   }
 }
 
