@@ -21,6 +21,9 @@ let units = "metric";
 
 ///////////////////////////////C&F Button/////////////////////////////
 
+let Fbtn = document.querySelector("#F-btn");
+Fbtn.addEventListener("click", toFahrenheit);
+
 const toFahrenheit = () => {
   let cityInput = document.querySelector("#input-location").innerHTML;
 
@@ -51,9 +54,6 @@ const toCelsius = () => {
   axios.get(apiUrl).then(displayCityInput);
   axios.get(apiUrl).then(getLatLon);
 };
-
-let Fbtn = document.querySelector("#F-btn");
-Fbtn.addEventListener("click", toFahrenheit);
 
 let Cbtn = document.querySelector("#C-btn");
 Cbtn.addEventListener("click", toCelsius);
