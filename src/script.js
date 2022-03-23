@@ -21,9 +21,6 @@ let units = "metric";
 
 ///////////////////////////////C&F Button/////////////////////////////
 
-let Fbtn = document.querySelector("#F-btn");
-Fbtn.addEventListener("click", toFahrenheit);
-
 const toFahrenheit = () => {
   let cityInput = document.querySelector("#input-location").innerHTML;
 
@@ -57,6 +54,8 @@ const toCelsius = () => {
 
 let Cbtn = document.querySelector("#C-btn");
 Cbtn.addEventListener("click", toCelsius);
+let Fbtn = document.querySelector("#F-btn");
+Fbtn.addEventListener("click", toFahrenheit);
 
 /////////////////////////////////////////////////CITY INPUT//////////////////////////////////////
 //capture city input
@@ -77,11 +76,9 @@ const getWeatherInfo = (cityInput) => {
     .get(apiUrl)
     .then(getLatLon)
     .catch((err) => {
-      alert("sorry, I can't find this city😅");
+      alert("Sorry, I can't find this city😅");
     });
-  // if (err instanceof Err) {
-  //   alert("sorry, I can't find this city");
-  // }
+
   axios.get(apiUrl).then(displayCityInput);
 };
 
@@ -234,8 +231,13 @@ const getPosition = (event) => {
 crtLocationBtn.addEventListener("click", getPosition);
 
 const displayCLInfo = (responseOneCall) => {
+  console.log(responseOneCall.data.current.weather[0].id);
   document.querySelector("#crt-weather-des").innerHTML =
     responseOneCall.data.current.weather[0].description; //current weather description
+
+  document.querySelector("#crt-img").src = changeImg(
+    responseOneCall.data.current.weather[0].id
+  );
 
   document.querySelector("#num-feelslike").innerHTML = `${Math.round(
     responseOneCall.data.current.feels_like
